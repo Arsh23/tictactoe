@@ -40,5 +40,5 @@ class TicTacToe():
             self.status = 'won'
             self.winner = 'A' if winning_pos[0][0] == 'O' else 'B'
             self.winning_pos = winning_pos
-        if '-' not in self.board:
+        elif '-' not in self.board:
             self.status = 'draw'
