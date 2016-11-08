@@ -5,6 +5,7 @@ class TicTacToe():
         self.board = ['-' for x in range(9)]
         self.log = []
         self.winner = None
+        self.winning_pos = []
         self.player = 'A'
         self.status = None
 
@@ -23,15 +24,7 @@ class TicTacToe():
         self.log.append(''.join([self.player, str(pos)]))
         self.board[pos] = 'O' if self.player == 'A' else 'X'
         self.player = 'B' if self.player == 'A' else 'A'
-        result = self.check()
-
-        if result == 'draw':
-            print "Draw !!"
-            self.status = 'draw'
-        elif result != None:
-            print ' {} Won !!'.format(result[0][0])
-            self.status = 'won'
-            self.winner = result
+        self.check()
 
     def check(self):
         h = [self.board[x: x + 3] for x in range(0, 9, 3)]
@@ -44,7 +37,8 @@ class TicTacToe():
                 winning_pos.append(''.join([x[0], str(i)]))
 
         if winning_pos != []:
-            return winning_pos
+            self.status = 'won'
+            self.winner = 'A' if winning_pos[0][0] == 'O' else 'B'
+            self.winning_pos = winning_pos
         if '-' not in self.board:
-            return 'draw'
-        return None
+            self.status = 'draw'
