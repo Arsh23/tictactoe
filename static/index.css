@@ -2,7 +2,6 @@
 
 table {
   border-collapse: collapse;
-  margin-top: 50px;
 }
 table td, table th {
   border: 1px solid black;
@@ -23,27 +22,106 @@ table tr th:last-child {
 }
 
 td {
-    font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     text-align: center;
-    font-weight: 200;
     font-size: 50px;
     padding: 15px 20px 15px 20px;
+    opacity: 0;
 }
 
-.x:before {
+/*.x:before {
     content: 'X';
-    /*color: #EA9010;*/
+    color: #EA9010;
     color: #2D3A3A;
 }
 
 
 .o:before {
     content: 'O';
-    /*color: #56CBF9;*/
+    color: #56CBF9;
     color: #2D3A3A;
 }
 
 .won:before {
     color: #2BA84A !important;
+}*/
+
+.heading {
+    font-size: 45px;
+    margin-bottom: 0px;
+    margin-top: 45px;
+}
+
+.subheading {
+    margin-top: 2px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.subtext {
+    display: inline-block;
+    font-size: 48px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.subtext2 {
+    font-size: 35px;
+}
+
+.raleway {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+}
+.center {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tbl {
+    margin: 90px auto;
+    opacity: 0;
+}
+.subbox {
+    /*z-index: -1;*/
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    left: 0;
+}
+
+
+
+
+
+
+button {
+  display: inline-block;
+  /*margin: 0 10px 0 0;*/
+  padding: 0px 30px;
+  font-size: 48px;
+  line-height: 1.8;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+button:focus {
+  outline: none
+}
+
+section.border button {
+  color: #2D3A3A;
+  background: rgba(0,0,0,0);
+  border: solid 2px #2D3A3A;
+}
+section.border button:hover,
+section.border button.hover {
+  border-color: #EA9010;
+  color: #EA9010;
+}
+section.border button:active,
+section.border button.active {
+  border-color: #2BA84A;
+  color: #2BA84A;
 }

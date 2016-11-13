@@ -7,28 +7,41 @@
 	<title>Add title</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='index.css') }}">
 
+	<script src="{{ url_for('static',filename='jquery-3.1.1.min.js') }}"> </script>
+	<script src="{{ url_for('static',filename='index.js') }}"> </script>
 </head>
 
 <body>
-    <center>
-        <table>
-            <tr>
-                <td class='x'></td>
-                <td class='o'></td>
-                <td class='x won'></td>
-            </tr>
-            <tr>
-                <td class='o'></td>
-                <td class='x won'></td>
-                <td class='x'></td>
-            </tr>
-            <tr>
-                <td class='x won'></td>
-                <td class='x'></td>
-                <td class='o'></td>
-            </tr>
-        </table>
-    </center>
+	<p class='heading raleway center'>Unbeatable TicTacToe</p>
+	<p class='subheading raleway center'>By <a>Arsh</a></p>
+
+	<div class='tbl center raleway'>
+		<table>
+			<tr>
+				<td class=''>N</td>
+				<td class=''>N</td>
+				<td class=''>N</td>
+			</tr>
+			<tr>
+				<td class=''>N</td>
+				<td class=''>N</td>
+				<td class=''>N</td>
+			</tr>
+			<tr>
+				<td class=''>N</td>
+				<td class=''>N</td>
+				<td class=''>N</td>
+			</tr>
+		</table>
+	</div>
+	<div class='subbox'>
+		<p class="subtext2 raleway center">Choose :</p>
+		<section class='border center'>
+			<button class='btn btn-o'> O </button>
+			<p class="subtext raleway">&nbsp;or&nbsp;</p>
+			<button class='btn btn-x'> X </button>
+		</section>
+		</div>
 </body>
 
 </html>
