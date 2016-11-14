@@ -47,23 +47,30 @@ def minimax_with_alphabeta(game, player, alpha, beta):
 
     return (best_pos, score)
 
-while game.status == None:
-    game.display()
-    print
+if __name__ == '__main__':
+    main()
 
-    if game.player == 'A':
-        # pos = int(raw_input('Enter your move : '))
-        pos = int(minimax_with_alphabeta(deepcopy(game),
-                                         'A', float('-inf'), float('inf'))[0])
-    else:
-        # pos = int(raw_input('Enter your move : '))
-        pos = int(minimax_with_alphabeta(deepcopy(game),
-                                         'B', float('-inf'), float('inf'))[0])
 
-    game.move(pos)
-    if game.status == 'draw':
+def main():
+    while game.status == None:
         game.display()
-        print 'Draw !!'
-    if game.status == 'won':
-        game.display()
-        print game.winner, 'Won !!'
+        print
+
+        if game.player == 'A':
+            # pos = int(raw_input('Enter your move : '))
+            pos = int(
+                minimax_with_alphabeta(deepcopy(game),
+                                       'A', float('-inf'), float('inf'))[0])
+        else:
+            # pos = int(raw_input('Enter your move : '))
+            pos = int(
+                minimax_with_alphabeta(deepcopy(game),
+                                       'B', float('-inf'), float('inf'))[0])
+
+        game.move(pos)
+        if game.status == 'draw':
+            game.display()
+            print 'Draw !!'
+        if game.status == 'won':
+            game.display()
+            print game.winner, 'Won !!'

@@ -1,20 +1,25 @@
 var current_player = 'N';
+var ai_turn = false;
 
 $(document).ready(function() {
     $(".btn").click(function() {
         // current_player = $(this).html();
 
         if ($(this).hasClass("btn-o") == true) {
-            current_player = 'O'
+            current_player = 'O';
+            ai_turn = false;
         }
 
         if ($(this).hasClass("btn-x") == true) {
-            current_player = 'X'
+            current_player = 'X';
+            ai_turn = true;
         }
+
+        $.ajax({url: "/choose/"+current_player});
 
         $('.subbox').css('z-index', -1)
         $('td').each(function() {
-            $(this).text(current_player)
+            $(this).text(current_player);
         });
 
         $(".tbl").animate({
