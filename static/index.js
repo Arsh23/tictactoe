@@ -38,12 +38,12 @@ function check_status(x) {
         var j = x.winning_pos[0][1];
         for (i = 0; i < 3; i++) {
             id = '#' + positions[j][i]
-            $(id).css('color','#2BA84A')
+            $(id).css('color', '#2BA84A')
         }
 
         // set the msg
         if (x.winner == 'ai') {
-            $('.tbl .status').html("The AI won!! ¯\\_(ツ)_/¯ \
+            $('.tbl .status').html("The AI won!! ¯\\_(ツ)_/¯\
             <br><a href='/'>Retry ?</a>")
         } else if (x.winner == 'user') {
             $('.tbl .status').html("You rekt my AI, Congrats!!\

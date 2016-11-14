@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,100,200');
+@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+
+/*media queries*/
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 480px) {
+    html {
+        font-size: 13px;
+    }
+}
+/*--------------------------------------*/
 
 /*table styles*/
 table {
@@ -28,33 +38,33 @@ table tr td:last-child, table tr th:last-child {
 td {
     text-transform: uppercase;
     text-align: center;
-    font-size: 50px;
-    padding: 15px 20px 15px 20px;
+    font-size: 3.125rem;
+    padding: 0.9375rem 1.25rem 0.9375rem 1.25rem;
     opacity: 0;
 }
 /*--------------------------------------*/
 
 .heading {
-    font-size: 60px;
+    font-size: 3.75rem;
     margin-bottom: 0px;
-    margin-top: 45px;
+    margin-top: 2.8125rem;
 }
 
 .subheading {
     margin-top: 2px;
-    margin-bottom: 20px;
-    font-size: 25px;
+    margin-bottom: 1.25rem;
+    font-size: 1.5625rem;
 }
 
 .subtext {
     display: inline-block;
-    font-size: 48px;
+    font-size: 3rem;
     margin-top: 0px;
     margin-bottom: 0px;
 }
 
 .subtext2 {
-    font-size: 35px;
+    font-size: 2.1875rem;
 }
 
 .raleway {
@@ -69,7 +79,7 @@ td {
 }
 
 .tbl {
-    margin: 40px auto;
+    margin: 2.5rem auto;
     opacity: 0;
 }
 
@@ -82,7 +92,7 @@ td {
 }
 
 .status {
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
 }
 
@@ -91,8 +101,8 @@ td {
 button {
     display: inline-block;
     /*margin: 0 10px 0 0;*/
-    padding: 0px 30px;
-    font-size: 48px;
+    padding: 0px 1.875rem;
+    font-size: 3rem;
     line-height: 1.8;
     border: none;
     box-shadow: none;

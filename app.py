@@ -1,14 +1,15 @@
-from flask import Flask, render_template, jsonify, session
 import os
 import random
 from copy import deepcopy
+
 import dill
+from flask import Flask, render_template, jsonify, session
+
 from tictactoe import TicTacToe
 from alphabeta import minimax_with_alphabeta
-# session['game'] = TicTacToe()
-# session['ai_player'] = None
+
 app = Flask(__name__)
-app.secret_key = '*AUNSDIuasd9*ASNd*^ATSND^@R))'
+app.secret_key = 's0mth1ng s3cr3t'
 
 
 @app.route('/')
@@ -26,18 +27,18 @@ def choice(symbol):
         return 'Error'
     session['ai_player'] = 'B' if symbol == 'O' else 'A'
     session.modified = True
-    print 'The player for AI is -', session['ai_player']
+    # print 'The player for AI is -', session['ai_player']
     return session['ai_player']
 
 
 @app.route('/move/<pos>')
 def move(pos):
-    print 'User moved -', pos
+    # print 'User moved -', pos
     pos = int(pos)
 
     game = dill.loads(session['game'])
     game.move(pos)
-    game.display()
+    # game.display()
     if game.status != None:
         x = 'ai' if game.winner == session['ai_player'] else 'user'
     else:
@@ -61,7 +62,8 @@ def minimax():
         deepcopy(game), session['ai_player'],
         float('-inf'), float('inf'))[0])
     game.move(pos)
-    game.display()
+    # game.display()
+
     if game.status != None:
         x = 'ai' if game.winner == session['ai_player'] else 'user'
     else:
