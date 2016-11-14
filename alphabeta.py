@@ -58,14 +58,12 @@ def main():
 
         if game.player == 'A':
             # pos = int(raw_input('Enter your move : '))
-            pos = int(
-                minimax_with_alphabeta(deepcopy(game),
-                                       'A', float('-inf'), float('inf'))[0])
+            pos = int(minimax_with_alphabeta(
+                deepcopy(game), 'A', float('-inf'), float('inf'))[0])
         else:
             # pos = int(raw_input('Enter your move : '))
-            pos = int(
-                minimax_with_alphabeta(deepcopy(game),
-                                       'B', float('-inf'), float('inf'))[0])
+            pos = int(minimax_with_alphabeta(
+                deepcopy(game), 'B', float('-inf'), float('inf'))[0])
 
         game.move(pos)
         if game.status == 'draw':
