@@ -1,8 +1,17 @@
-var current_player = 'N';
 var ai_turn = false;
 var ai_player = 'N'
 var user_player = 'N'
-
+var game_ended = false
+var positions = {
+    0: [0, 1, 2],
+    1: [3, 4, 5],
+    2: [6, 7, 8],
+    3: [0, 3, 6],
+    4: [1, 4, 9],
+    5: [2, 5, 8],
+    6: [0, 4, 8],
+    7: [2, 4, 6]
+}
 
 function change_board(x) {
     if (x == 'disable') {
@@ -16,6 +25,34 @@ function change_board(x) {
     }
 }
 
+function check_status(x) {
+    if (x.status == 'draw') {
+        game_ended = true
+        change_board('disable');
+        $('.tbl .status').html("Its a Draw! <a href='/'>Retry ?</a>")
+
+    } else if (x.status == 'won') {
+        game_ended = true
+        change_board('enable');
+        // color the winning moves
+        var j = x.winning_pos[0][1];
+        for (i = 0; i < 3; i++) {
+            id = '#' + positions[j][i]
+            $(id).css('color','#2BA84A')
+        }
+
+        // set the msg
+        if (x.winner == 'ai') {
+            $('.tbl .status').html("The AI won!! ¯\\_(ツ)_/¯ \
+            <br><a href='/'>Retry ?</a>")
+        } else if (x.winner == 'user') {
+            $('.tbl .status').html("You rekt my AI, Congrats!!\
+            <br>Do tell me how you did it!<br><a href='/'>Retry ?</a>")
+        }
+    }
+}
+
+
 function make_move(pos) {
     if (ai_turn == false) {
         // mark user's move on board
@@ -23,7 +60,7 @@ function make_move(pos) {
         $(id).addClass("filled");
         $(id).css('opacity', 1);
         $(id).text(user_player)
-        // --------------------------------------
+            // --------------------------------------
 
         // get user's move
         $.ajax({
@@ -31,11 +68,14 @@ function make_move(pos) {
         }).done(function(result) {
 
             // check game status
-            // --------------------------------------
+            check_status(result)
+                // --------------------------------------
 
             // make ai's move after user's move is made
-            ai_turn = true;
-            make_move(-1)
+            if (game_ended == false) {
+                ai_turn = true;
+                make_move(-1)
+            }
         });
     } else if (ai_turn == true) {
 
@@ -55,13 +95,16 @@ function make_move(pos) {
             $(id).text(ai_player)
 
             // check game status
-            // --------------------------------------
+            check_status(result)
+                // --------------------------------------
 
-            // setup board for user
-            ai_turn = false;
-            change_board('enable');
-            $('.tbl .status').html(' Your Turn!')
-            // --------------------------------------
+            if (game_ended == false) {
+                ai_turn = false;
+                // setup board for user
+                change_board('enable');
+                $('.tbl .status').html(' Your Turn!')
+                    // --------------------------------------
+            }
         });
     }
 }
@@ -130,7 +173,9 @@ $(document).ready(function() {
         // run when user clicks a block
         if ($(this).hasClass("filled") == false && ai_turn == false) {
             // make user's move
-            make_move($(this).attr('id'));
+            if (game_ended == false) {
+                make_move($(this).attr('id'));
+            }
         }
     });
 });
