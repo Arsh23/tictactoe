@@ -1,43 +1,50 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, session
 import os
 import random
 from copy import deepcopy
-
+import dill
 from tictactoe import TicTacToe
 from alphabeta import minimax_with_alphabeta
-game = TicTacToe()
-ai_player = None
+# session['game'] = TicTacToe()
+# session['ai_player'] = None
 app = Flask(__name__)
+app.secret_key = '*AUNSDIuasd9*ASNd*^ATSND^@R))'
 
 
 @app.route('/')
 def home():
-    global game, ai_player
     game = TicTacToe()
-    ai_player = None
+    session['game'] = dill.dumps(game)
+    session['ai_player'] = None
+    session.modified = True
     return render_template('index.html')
 
 
 @app.route('/choose/<symbol>')
 def choice(symbol):
-    global ai_player
     if symbol not in ['O', 'X']:
         return 'Error'
-    ai_player = 'B' if symbol == 'O' else 'A'
-    print 'The player for AI is -', ai_player
-    return ai_player
+    session['ai_player'] = 'B' if symbol == 'O' else 'A'
+    session.modified = True
+    print 'The player for AI is -', session['ai_player']
+    return session['ai_player']
 
 
 @app.route('/move/<pos>')
 def move(pos):
     print 'User moved -', pos
     pos = int(pos)
+
+    game = dill.loads(session['game'])
     game.move(pos)
     game.display()
     if game.status != None:
-        x = 'ai' if game.winner == ai_player else 'user'
+        x = 'ai' if game.winner == session['ai_player'] else 'user'
     else:
         x = ''
+
+    session['game'] = dill.dumps(game)
+    session.modified = True
     return jsonify({
         'move': pos,
         'status': game.status,
@@ -48,14 +55,19 @@ def move(pos):
 
 @app.route('/move_minimax')
 def minimax():
+    game = dill.loads(session['game'])
+
     pos = int(minimax_with_alphabeta(
-        deepcopy(game), ai_player, float('-inf'), float('inf'))[0])
+        deepcopy(game), session['ai_player'],
+        float('-inf'), float('inf'))[0])
     game.move(pos)
     game.display()
     if game.status != None:
-        x = 'ai' if game.winner == ai_player else 'user'
+        x = 'ai' if game.winner == session['ai_player'] else 'user'
     else:
         x = ''
+
+    session['game'] = dill.dumps(game)
     return jsonify({
         'move': pos,
         'status': game.status,

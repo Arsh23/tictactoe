@@ -45,6 +45,7 @@ def minimax_with_alphabeta(game, player, alpha, beta):
             if beta <= alpha:
                 break
 
+    best_pos = random.choice(range(9)) if len(possible_pos) == 9 else best_pos
     return (best_pos, score)
 
 if __name__ == '__main__':

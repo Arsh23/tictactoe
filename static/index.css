@@ -1,24 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,100,200');
 
+/*table styles*/
 table {
-  border-collapse: collapse;
+    border-collapse: collapse;
 }
+
 table td, table th {
-  border: 1px solid black;
+    border: 1px solid black;
 }
+
 table tr:first-child td {
-  border-top: 0;
+    border-top: 0;
 }
+
 table tr:last-child td {
-  border-bottom: 0;
+    border-bottom: 0;
 }
-table tr td:first-child,
-table tr th:first-child {
-  border-left: 0;
+
+table tr td:first-child, table tr th:first-child {
+    border-left: 0;
 }
-table tr td:last-child,
-table tr th:last-child {
-  border-right: 0;
+
+table tr td:last-child, table tr th:last-child {
+    border-right: 0;
 }
 
 td {
@@ -28,26 +32,10 @@ td {
     padding: 15px 20px 15px 20px;
     opacity: 0;
 }
-
-/*.x:before {
-    content: 'X';
-    color: #EA9010;
-    color: #2D3A3A;
-}
-
-
-.o:before {
-    content: 'O';
-    color: #56CBF9;
-    color: #2D3A3A;
-}
-
-.won:before {
-    color: #2BA84A !important;
-}*/
+/*--------------------------------------*/
 
 .heading {
-    font-size: 45px;
+    font-size: 60px;
     margin-bottom: 0px;
     margin-top: 45px;
 }
@@ -73,15 +61,18 @@ td {
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
 }
+
 .center {
     display: table;
     margin-left: auto;
     margin-right: auto;
 }
+
 .tbl {
-    margin: 90px auto;
+    margin: 40px auto;
     opacity: 0;
 }
+
 .subbox {
     /*z-index: -1;*/
     position: absolute;
@@ -96,36 +87,64 @@ td {
 }
 
 
-
-
-
+/*button styles*/
 button {
-  display: inline-block;
-  /*margin: 0 10px 0 0;*/
-  padding: 0px 30px;
-  font-size: 48px;
-  line-height: 1.8;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
+    display: inline-block;
+    /*margin: 0 10px 0 0;*/
+    padding: 0px 30px;
+    font-size: 48px;
+    line-height: 1.8;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
 }
 
 button:focus {
-  outline: none
+    outline: none
 }
 
 section.border button {
-  color: #2D3A3A;
-  background: rgba(0,0,0,0);
-  border: solid 2px #2D3A3A;
+    color: #2D3A3A;
+    background: rgba(0, 0, 0, 0);
+    border: solid 2px #2D3A3A;
 }
-section.border button:hover,
-section.border button.hover {
-  border-color: #EA9010;
-  color: #EA9010;
+
+section.border button:hover, section.border button.hover {
+    border-color: #EA9010;
+    color: #EA9010;
 }
-section.border button:active,
-section.border button.active {
-  border-color: #2BA84A;
-  color: #2BA84A;
+
+section.border button:active, section.border button.active {
+    border-color: #2BA84A;
+    color: #2BA84A;
 }
+/*--------------------------------------*/
+
+
+/*github corner
+  - https://github.com/tholman/github-corners*/
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+    0%, 100% {
+        transform: rotate(0)
+    }
+    20%, 60% {
+        transform: rotate(-25deg)
+    }
+    40%, 80% {
+        transform: rotate(10deg)
+    }
+}
+
+@media (max-width:500px) {
+    .github-corner:hover .octo-arm {
+        animation: none
+    }
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
+}
+/*--------------------------------------*/
