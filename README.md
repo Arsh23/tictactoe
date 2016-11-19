@@ -1,6 +1,6 @@
 # TicTacToe
 
-A unbeatable AI , made using [minimax algorithm](https://en.wikipedia.org/wiki/Minimax) ,
+An unbeatable AI , made using [minimax algorithm](https://en.wikipedia.org/wiki/Minimax) ,
 optimized with [alpha-beta pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
 
 ### Files :
