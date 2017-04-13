@@ -1,7 +1,9 @@
 # TicTacToe
 
-An unbeatable AI , made using [minimax algorithm](https://en.wikipedia.org/wiki/Minimax) ,
+An unbeatable bot , made using [minimax algorithm](https://en.wikipedia.org/wiki/Minimax) ,
 optimized with [alpha-beta pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
+<br>
+Link: [http://projects.arsh.xyz/tictactoe](http://projects.arsh.xyz/tictactoe)
 
 ### Files :
 - [tictactoe.py](https://github.com/Arsh23/tictactoe/blob/master/tictactoe.py) - contains the class TicTacToe() which emulates the game
